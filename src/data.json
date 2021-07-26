@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "_id": "1",
+      "images": "/images/dress1.jpg",
+      "title": "Dress 1",
+      "desription": "This is best dress on the life",
+      "price": 19,
+      "availableSizes": ["X", "XL", "XXL"]
+    },
+    {
+      "_id": "2",
+      "images": "/images/dress2.jpg",
+      "title": "Dress 2",
+      "desription": "This is best dress on the life",
+      "price": 29,
+      "availableSizes": ["XL", "L"]
+    },
+    {
+      "_id": "3",
+      "images": "/images/dress3.jpg",
+      "title": "Dress 3",
+      "desription": "This is best dress on the life",
+      "price": 39,
+      "availableSizes": ["X", "M", "L"]
+    },
+    {
+      "_id": "4",
+      "images": "/images/dress4.jpg",
+      "title": "Dress 4",
+      "desription": "This is best dress on the life",
+      "price": 49,
+      "availableSizes": ["XL", "X", "L", "M", "XXL"]
+    },
+    {
+      "_id": "5",
+      "images": "/images/dress5.jpg",
+      "title": "Dress 4",
+      "desription": "This is best dress on the life",
+      "price": 49,
+      "availableSizes": ["XL", "L"]
+    }
+  ]
+}
