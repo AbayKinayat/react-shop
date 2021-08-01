@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 import Fade from 'react-reveal/Fade'
 import formatCurrency from '../util';
+import {removeFromCart} from "../actions/cartActions";
 
-export default class Cart extends Component {
+class Cart extends Component {
 
   constructor(props) {
     super(props);
@@ -67,66 +69,66 @@ export default class Cart extends Component {
             cartItems.length !== 0 && (
               <div>
                 <Fade bottom>
-                <div className="cart">
-                  <div className="total">
-                    <div>
-                      Total:{" "}
-                      {formatCurrency(cartItems.reduce((a, b) => a + b.price * b.count, 0))}
+                  <div className="cart">
+                    <div className="total">
+                      <div>
+                        Total:{" "}
+                        {formatCurrency(cartItems.reduce((a, b) => a + b.price * b.count, 0))}
+                      </div>
+                      <button onClick={() => this.setState({ showCheckout: true })} className="button primary">Proceed</button>
                     </div>
-                    <button onClick={() => this.setState({ showCheckout: true })} className="button primary">Proceed</button>
                   </div>
-                </div>
                 </Fade>
                 {this.state.showCheckout &&
-                <Fade bottom>
-                  <div className="cart">
-                    <form onSubmit={this.createOrder}>
-                      <ul className="form-container">
-                        <li>
-                          <label htmlFor="email">Email</label>
-                          <input
-                            id="email"
-                            name="email"
-                            placeholder="john.valedskoy@gmail.com"
-                            type="email"
-                            required
-                            onChange={this.handleInput}
-                          />
-                        </li>
-                        <li>
-                          <label htmlFor="name">Name</label>
-                          <input
-                            id="name"
-                            name="name"
-                            placeholder="John"
-                            type="text"
-                            required
-                            onChange={this.handleInput}
-                          />
-                        </li>
-                        <li>
-                          <label htmlFor="address">Address</label>
-                          <input
-                            id="address"
-                            name="address"
-                            placeholder="street 2902 Park Avenue"
-                            type="text"
-                            required
-                            onChange={this.handleInput}
-                          />
-                        </li>
-                        <li>
-                          <button
-                            type="submit"
-                            className="button primary"
-                          >
-                            Checkout
-                          </button>
-                        </li>
-                      </ul>
-                    </form>
-                  </div>
-                </Fade>
+                  <Fade bottom>
+                    <div className="cart">
+                      <form onSubmit={this.createOrder}>
+                        <ul className="form-container">
+                          <li>
+                            <label htmlFor="email">Email</label>
+                            <input
+                              id="email"
+                              name="email"
+                              placeholder="john.valedskoy@gmail.com"
+                              type="email"
+                              required
+                              onChange={this.handleInput}
+                            />
+                          </li>
+                          <li>
+                            <label htmlFor="name">Name</label>
+                            <input
+                              id="name"
+                              name="name"
+                              placeholder="John"
+                              type="text"
+                              required
+                              onChange={this.handleInput}
+                            />
+                          </li>
+                          <li>
+                            <label htmlFor="address">Address</label>
+                            <input
+                              id="address"
+                              name="address"
+                              placeholder="street 2902 Park Avenue"
+                              type="text"
+                              required
+                              onChange={this.handleInput}
+                            />
+                          </li>
+                          <li>
+                            <button
+                              type="submit"
+                              className="button primary"
+                            >
+                              Checkout
+                            </button>
+                          </li>
+                        </ul>
+                      </form>
+                    </div>
+                  </Fade>
                 }
               </div>
             )
@@ -136,3 +138,14 @@ export default class Cart extends Component {
     )
   }
 }
+
+
+export default connect(
+  (state) =>
+  ({
+    cartItems: state.carts.cartItems
+  }),
+  {
+    removeFromCart: removeFromCart
+  }
+)(Cart)
