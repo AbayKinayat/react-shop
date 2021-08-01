@@ -13,7 +13,6 @@ mongoose.connect("mongodb://localhost/react-shop-db", {
   useUnifiedTopology: true,
 });
 
-
 const Product = mongoose.model(
   "products",
   new mongoose.Schema({
